@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Creates a deployment packge for Carbon Black Defense.</string>
+    <key>Identifier</key>
+    <string>com.hb3b.pkg.CbDefense</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>CbDefense</string>
+        <key>version</key>
+        <string>3.0.2.8</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.6.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>pkgdirs</key>
+                <dict>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_path</key>
+                <string>%RECIPE_DIR%/Scripts/</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/Resources</string>
+                <key>overwrite</key>
+                <string>true</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgname</key>
+                <string>%NAME%</string>
+                <key>pkg_request</key>
+                <dict>
+                    <key>pkgroot</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <key>id</key>
+                    <string>com.hb3b.pkg.CbDefense</string>
+                    <key>options</key>
+                    <string>purge_ds_store</string>
+                    <key>scripts</key>
+                    <string>Resources</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

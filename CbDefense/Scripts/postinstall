@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./cbdefense_install_unattended.sh -i CbDefenseInstall.pkg -c "TFTC2P7KWF8LZ71#FT6" -g Monitored
